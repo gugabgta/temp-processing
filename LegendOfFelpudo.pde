@@ -25,7 +25,7 @@ DebugMode meuDebug;
 
 CenaIntro cenaIntro;
 CenaGame cenaGame;
-Menu menu;
+CenaMenu cenaMenu;
 
 ArrayList<Scene> cenas;
 
@@ -46,14 +46,15 @@ void setup() {
 
   cenas = new ArrayList<Scene>();
   cenaIntro = new CenaIntro();
-  menu = new Menu();
   cenaGame = new CenaGame();
+  cenaMenu = new CenaMenu();
 
   cenaIntro.ativo=true;
-
-  cenas.add(cenaIntro);
-  cenas.add(menu);
+  //cenaMenu.ativo = true;
   cenas.add(cenaGame);
+  cenas.add(cenaIntro);
+  cenas.add(cenaMenu);
+
 }
 void draw() {
   clear();
@@ -73,38 +74,42 @@ void draw() {
 }
 
 void mousePressed() {
+  cenaMenu.mousePressed(cenaGame, cenaIntro);
+
   contaFase++;
   if (contaFase>cenas.size()-1) {
     contaFase=0;
   }
-
-  for (int i=0; i<cenas.size(); i++) {
-    Scene c = cenas.get(i);
-    c.ativo=false;
-    if (i==contaFase) {
-      c.ativo=true;
-    }
-  }
 }
 
 void keyPressed() {
-  if (!acabou) {
-    if (keyCode==32) {
-
-      if (peninhas>0) {
-        peninhas--;
-        jogador.atirou();
-      }
-    }
-
-
-    if ((keyCode==49) || (key=='1')) {
-      debugMode = !debugMode;
-    }
-    jogador.apertouKey();
+  if (acabou) {
+    return;
   }
+
+  if (keyCode==32) {
+    if (peninhas>0) {
+      peninhas--;
+      jogador.atirou();
+    }
+  }
+
+  if ((keyCode==49) || (key=='1')) {
+    debugMode = !debugMode;
+  }
+
+  cenaIntro.apertouKey(cenaMenu);
+  jogador.apertouKey();
 }
 
+
 void keyReleased() {
-    jogador.soltouKey();
-  }
+  jogador.soltouKey();
+}
+
+void gameOver(String msg) {
+  mensagemFimDeJogo = msg;
+  cenaGame.ativo = false;
+  cenaIntro.ativo = true;
+  acabou=true;
+}

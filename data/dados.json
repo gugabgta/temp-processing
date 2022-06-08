@@ -3,32 +3,25 @@
 	"versao": 0.9,
 	"releaseDate": "2014-06-25T00:00:00.000Z",
 	"demo": true,
-   
-   
-   
-  "tile_objetos": "00000111112222233333",
-
+    "tile_objetos": "00000111112222233333",
 	"margens": {
 		"margem_sup": 100,
 		"margem_inf": 45,
 		"margem_esq": 35,
 		"margem_dir": 35
 	},
- 
-
 	"quantidades": {
 		"itens": 20,
-		"colunas": 5, 
+		"colunas": 5,
 		"tempo": 120,
 		"peninhas_iniciais": 5
 	},
-
-	
-
-	"textos_box": { 
+	"stringFase": {
+		"fase1": "XMEMMPPPPPXXEXXEXXXXMMEMM",
+        "fase2": "XMMMMMMMMMMMMMMMMMMMMMMMM"
+	},
+	"textos_box": {
 		"msg_fofura1": "Oi! Eu sou a Fofura!",
-		"msg_felpudo1": "Olá! Eu sou o Felpudo!\nBem - Vindo ao Curso de Programação de Games com Processing e Java!\n.\nINTRUÇÕES:\nUse as SETAS DO TECLADO para movimentar e ESPAÇO para atirar.",
-		
-		
-	} 
+		"msg_felpudo1": "Olá! Eu sou o Felpudo!\nBem - Vindo ao Curso de Programação de Games com Processing e Java!\n.\nINTRUÇÕES:\nUse as SETAS DO TECLADO para movimentar e ESPAÇO para atirar."
+    }
 }

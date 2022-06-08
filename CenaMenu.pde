@@ -1,19 +1,19 @@
-class CenaIntro extends Scene {
-
-  PImage img_felpudo;
+class CenaMenu extends Scene {
+  PImage img_menu;
   float fl;
   float fa;
 
-  CenaIntro() {
+  CenaMenu() {
     super();
 
-    img_felpudo = loadImage("felpudo_google_glass.png");
-    fl = img_felpudo.width*0.9;
-    fa = img_felpudo.height*0.9;
+    img_menu = loadImage("menu.png");
+    fl = img_menu.width*0.9;
+    fa = img_menu.height*0.9;
   }
 
   @Override void update() {
   }
+
   @Override void display() {
     fill(#ab9758);
     background(#ab9758);
@@ -28,18 +28,29 @@ class CenaIntro extends Scene {
     text("The Legend of Felpudo", 0, 60, width, 160);
     pushMatrix();
     scale(-1, 1.0);
-    image(img_felpudo, -width/2-fl/2, height-fa-20, fl, fa);
+    image(img_menu, -width/2-fl/2, height-fa-20, fl, fa);
     popMatrix();
+
+
+
+    //println("x: " + mouseX);
+    //println("y: " + mouseY);
+
+    rect (250, 290, 220, 70);
   }
 
-  void apertouKey(Scene proxima) {
+  //mouse pressed
+  void mousePressed(Scene proxima, Scene anterior) {
     if (!this.ativo) {
       return;
     }
-    if (key == 'X' || key == 'x') {
+    if (mouseX > 250 && mouseX < 470 && mouseY > 290 && mouseY < 360) {
       proxima.ativo=true;
       this.ativo=false;
-      println("apertou x durante a intro");
+    } else {
+      anterior.ativo=true;
+      this.ativo=false;
     }
+
   }
 }

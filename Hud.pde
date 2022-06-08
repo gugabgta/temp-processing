@@ -1,6 +1,3 @@
-
-
-
 class Hud {
 
   int cont = vidas+1;
@@ -21,7 +18,7 @@ class Hud {
     image(imagensVidas.get(vidas), 15, 15, 80, 80);
 
     textSize(16);
-    fill(255); 
+    fill(255);
     textFont(minhaFonte);
     textAlign(LEFT);
     text("Tempo: " + tempo, 120, 50, 200, 50);
@@ -37,17 +34,16 @@ class Hud {
       if (vidas>0) {
         vidas--;
       } else {
-        mensagemFimDeJogo = "Perdeu o Jogo!";
-        acabou=true;
+         gameOver("Perdeu o Jogo!");
       }
     }
   }
- 
+
   void pegouMoeda() {
     moedas++;
   }
   void pegouPeninha() {
     peninhas++;
   }
-  
+
 }

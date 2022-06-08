@@ -5,7 +5,7 @@ ArrayList<MessageBox> mensagens;
 class CenaGame extends Scene {
 
   Relogio relogio;
-  int tempoCena=20;
+  int tempoCena=500;
   Actor fofura;
 
   Hud hud;
@@ -18,6 +18,10 @@ class CenaGame extends Scene {
 
 
   PImage imagemFundo;
+
+  JSONObject json = loadJSONObject("dados.json"); // carrega o arquivo json //<>// //<>//
+  JSONObject textos_box = json.getJSONObject("stringFase");
+  String fase = textos_box.getString("fase2");
 
   CenaGame() {
 
@@ -40,7 +44,7 @@ class CenaGame extends Scene {
     imagemFundo = loadImage("BACKGROUND.jpg");
     gridPontos = meuDebug.obterGrid();
 
-    String fase1 = "XMEMMPPPPPXXEXXEXXXXMMEMM";
+    String fase1 = fase;
 
     for (int i=0; i<fase1.length(); i++) {
       char c = fase1.charAt(i);
@@ -84,8 +88,7 @@ class CenaGame extends Scene {
     if (!acabou) {
       tempo= tempoCena-relogio.segundo();
       if (tempo<=0) {
-        acabou=true;
-        mensagemFimDeJogo = "Tempo Acabou";
+        gameOver("Tempo Acabou");
         relogio.stop();
       }
     }
