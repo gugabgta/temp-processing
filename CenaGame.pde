@@ -5,7 +5,7 @@ ArrayList<MessageBox> mensagens;
 class CenaGame extends Scene {
 
   Relogio relogio;
-  int tempoCena=500;
+  int tempoCena=100;
   Actor fofura;
 
   Hud hud;
@@ -15,13 +15,14 @@ class CenaGame extends Scene {
 
   ArrayList<Star> estrelas;
   ArrayList<Explosao> explosoes;
+  Scene proxima;
 
 
   PImage imagemFundo;
-
+ //<>//
   JSONObject json = loadJSONObject("dados.json"); // carrega o arquivo json //<>// //<>//
   JSONObject textos_box = json.getJSONObject("stringFase");
-  String fase = textos_box.getString("fase2");
+  String fase = textos_box.getString("fase1");
 
   CenaGame() {
 
@@ -69,6 +70,19 @@ class CenaGame extends Scene {
         }
         inimigo.velocidade=2;
         inimigos.add(inimigo);
+        break;
+
+        case 'B':
+        Enemy outro = new Enemy("BUGADO", 6);
+        outro.x=gridPontos [i][0];
+        outro.y=gridPontos [i][1];
+        if (int(random(0.2))%2==0) {
+          outro.direcaoX=-1;
+        } else {
+          outro.direcaoX=1;
+        }
+        outro.velocidade=4;
+        inimigos.add(outro);
         break;
 
       case 'P':
@@ -148,8 +162,10 @@ class CenaGame extends Scene {
           explosoes.add(exp);
 
           if (inimigos.size()==0) {
-            acabou=true;
-            mensagemFimDeJogo = "Destruiu Tudo";
+            //acabou=true;
+            //mensagemFimDeJogo = "Destruiu Tudo";
+
+            proximaFase();
           }
         }
       }
@@ -216,5 +232,14 @@ class CenaGame extends Scene {
   void addStar(float px, float py) {
     Star s = new Star(px, py, 0.5, 0.5);
     estrelas.add(s);
+  }
+
+  void proximaFase() {
+    proxima.ativo=true;
+    ativo=false;
+  }
+
+  void defineProximaFase(Scene fase) {
+    proxima = fase;
   }
 }

@@ -31,6 +31,8 @@ class Hud {
 
   void apanhou() {
     if (!acabou) {
+      hit.rewind();
+      hit.play();
       if (vidas>0) {
         vidas--;
       } else {
@@ -41,9 +43,13 @@ class Hud {
 
   void pegouMoeda() {
     moedas++;
+    coin.rewind();
+    coin.play();
   }
   void pegouPeninha() {
     peninhas++;
+    coin.rewind();
+    coin.play();
   }
 
 }

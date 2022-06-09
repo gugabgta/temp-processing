@@ -1,7 +1,7 @@
 class Player {
 
   float x;
-  float y; 
+  float y;
   float l;
   float a;
   float escalaX;
@@ -151,7 +151,7 @@ class Player {
     spriteVez = spritesPlayer.get(indexAnima);
     image(spriteVez.get(int(contadorAnima)), x-l/2, y-a/2, l, a);
     noTint();
-    
+
     if (debugMode) {
       stroke(255, 255, 0);
       strokeWeight(5);
@@ -167,40 +167,42 @@ class Player {
   void apertouKey() {
 
     if ((keyCode==87)||(keyCode==38)) {
-      direcaoY = -1; 
+      direcaoY = -1;
       direcaoX=0;
       indexAnima = 5;
     }
     if ((keyCode==83)||(keyCode==40)) {
-      direcaoY = 1; 
+      direcaoY = 1;
       direcaoX=0;
       indexAnima = 4;
     }
     if ((keyCode==65)||(keyCode==37)) {
-      direcaoX = -1; 
+      direcaoX = -1;
       direcaoY=0;
       indexAnima = 6;
     }
     if ((keyCode==68)||(keyCode==39)) {
-      direcaoX = 1; 
+      direcaoX = 1;
       direcaoY=0;
       indexAnima = 7;
     }
-    if ((direcaoX!=0)||(direcaoY!=0)) { 
-      lastDX=direcaoX; 
+    if ((direcaoX!=0)||(direcaoY!=0)) {
+      lastDX=direcaoX;
       lastDY=direcaoY;
     }
   }
   void soltouKey() {
     if (!keyPressed) {
-      indexAnima = indexAnima>3 ? indexAnima-4 : indexAnima;  
+      indexAnima = indexAnima>3 ? indexAnima-4 : indexAnima;
       direcaoX=0;
       direcaoY=0;
     }
   }
 
   void atirou() {
-    Shot tiro = new Shot(x, y, 0.75, 0.75, "SHOT.png", lastDX, lastDY, 25);  
+    tiro.rewind();
+    tiro.play();
+    Shot tiro = new Shot(x, y, 0.75, 0.75, "SHOT.png", lastDX, lastDY, 25);
     tiros.add(tiro);
   }
 }

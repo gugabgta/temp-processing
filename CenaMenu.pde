@@ -30,13 +30,6 @@ class CenaMenu extends Scene {
     scale(-1, 1.0);
     image(img_menu, -width/2-fl/2, height-fa-20, fl, fa);
     popMatrix();
-
-
-
-    //println("x: " + mouseX);
-    //println("y: " + mouseY);
-
-    rect (250, 290, 220, 70);
   }
 
   //mouse pressed
@@ -44,10 +37,12 @@ class CenaMenu extends Scene {
     if (!this.ativo) {
       return;
     }
+    start.rewind();
+    start.play();
     if (mouseX > 250 && mouseX < 470 && mouseY > 290 && mouseY < 360) {
       proxima.ativo=true;
       this.ativo=false;
-    } else {
+    } else if (mouseX > 250 && mouseX < 470 && mouseY > 370 && mouseY < 440) {
       anterior.ativo=true;
       this.ativo=false;
     }

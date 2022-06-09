@@ -1,7 +1,7 @@
 class Enemy extends Actor {
 
   Enemy(String urlImg, int frames) {
-    super(urlImg, 500, 300, 1.0f, 1.0f, 25, 1, frames);
+    super(urlImg, 500, 300, 1.0f, 1.0f, 18, 1, frames);
     tag=3;
   }
 

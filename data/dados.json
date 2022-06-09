@@ -17,11 +17,18 @@
 		"peninhas_iniciais": 5
 	},
 	"stringFase": {
-		"fase1": "XMEMMPPPPPXXEXXEXXXXMMEMM",
-        "fase2": "XMMMMMMMMMMMMMMMMMMMMMMMM"
+		"fase1": "XXXMEMPEMPMXMPPPMPMEMPEMP",
+		"fase2": "XMMEMEEPMPPPMPXXXEMPEPPBM",
+		"fase3": "XXXBEPMPXMPBMMPEEPMPPPBBE",
+		"fase4": "XPPMEBPEMPMPMBEPMPMEMPEMP",
+		"fase5": "XMMEMEEPMPBPMPXPMEMPBPPBM",
+		"fase6": "XXPBEPMPBMPBMMPBEBMPPPBBE"
 	},
 	"textos_box": {
-		"msg_fofura1": "Oi! Eu sou a Fofura!",
-		"msg_felpudo1": "Olá! Eu sou o Felpudo!\nBem - Vindo ao Curso de Programação de Games com Processing e Java!\n.\nINTRUÇÕES:\nUse as SETAS DO TECLADO para movimentar e ESPAÇO para atirar."
-    }
+		"msg_fofura1": "Oi! Eu sou a Fofura!"
+    },
+	"falas_intro": {
+		"0": "Olá! Eu sou o Felpudo!\nINTRUÇÕES:\nUse as SETAS DO TECLADO para movimentar e ESPAÇO para atirar.",
+		"1": "era uma vez um jogo de RPG,\nque era muito divertido,\nmas não era tão divertido\ncomo o que eu gostava."
+	}
 }

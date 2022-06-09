@@ -1,3 +1,10 @@
+import ddf.minim.*;
+import ddf.minim.analysis.*;
+import ddf.minim.effects.*;
+import ddf.minim.signals.*;
+import ddf.minim.spi.*;
+import ddf.minim.ugens.*;
+
 float deltaTime;
 boolean debugMode = false;
 color [] cores = {#BF3B0F, #F5A716, #E5DE07, #ABF214, #109EE3, #C102ED, #ED0278, #AAAA00, #0000AA};
@@ -26,6 +33,20 @@ DebugMode meuDebug;
 CenaIntro cenaIntro;
 CenaGame cenaGame;
 CenaMenu cenaMenu;
+CenaDiff cenaDiff;
+CenaGame2 cenaGame2;
+CenaGame3 cenaGame3;
+CenaGame4 cenaGame4;
+CenaGame5 cenaGame5;
+CenaGame6 cenaGame6;
+CenaHistoria cenaHistoria;
+
+Minim gerenciador;
+AudioPlayer musica_de_fundo;
+AudioPlayer start;
+AudioPlayer coin;
+AudioPlayer tiro;
+AudioPlayer hit;
 
 ArrayList<Scene> cenas;
 
@@ -46,15 +67,44 @@ void setup() {
 
   cenas = new ArrayList<Scene>();
   cenaIntro = new CenaIntro();
-  cenaGame = new CenaGame();
   cenaMenu = new CenaMenu();
+  cenaDiff = new CenaDiff();
+  cenaGame = new CenaGame();
+  cenaGame2 = new CenaGame2();
+  cenaGame3 = new CenaGame3();
+  cenaGame4 = new CenaGame4();
+  cenaGame5 = new CenaGame5();
+  cenaGame6 = new CenaGame6();
+  cenaHistoria = new CenaHistoria();
 
+  cenaGame.defineProximaFase(cenaGame2);
+  cenaGame2.defineProximaFase(cenaGame3);
+  cenaGame4.defineProximaFase(cenaGame5);
+  cenaGame5.defineProximaFase(cenaGame6);
+  //cenaGame.defineProximaFase(cenaGame2);
   cenaIntro.ativo=true;
-  //cenaMenu.ativo = true;
+  //cenaDiff.ativo = true;
+  //cenaGame.ativo = true;
   cenas.add(cenaGame);
+  cenas.add(cenaGame2);
+  cenas.add(cenaGame3);
+  cenas.add(cenaGame4);
+  cenas.add(cenaGame5);
+  cenas.add(cenaGame6);
   cenas.add(cenaIntro);
   cenas.add(cenaMenu);
+  cenas.add(cenaDiff);
+  cenas.add(cenaHistoria);
 
+  gerenciador = new Minim(this);
+  musica_de_fundo = gerenciador.loadFile("indestructible.mp3");
+  start = gerenciador.loadFile("start.wav");
+  coin = gerenciador.loadFile("coin.wav");
+  tiro = gerenciador.loadFile("gun.mp3");
+  hit = gerenciador.loadFile("hit.wav");
+
+  musica_de_fundo.rewind();
+  musica_de_fundo.play();
 }
 void draw() {
   clear();
@@ -74,12 +124,8 @@ void draw() {
 }
 
 void mousePressed() {
-  cenaMenu.mousePressed(cenaGame, cenaIntro);
-
-  contaFase++;
-  if (contaFase>cenas.size()-1) {
-    contaFase=0;
-  }
+  cenaDiff.mousePressed(cenaGame, cenaGame4);
+  cenaMenu.mousePressed(cenaHistoria, cenaIntro);
 }
 
 void keyPressed() {
@@ -98,6 +144,7 @@ void keyPressed() {
     debugMode = !debugMode;
   }
 
+  cenaHistoria.apertouKey(cenaDiff);
   cenaIntro.apertouKey(cenaMenu);
   jogador.apertouKey();
 }
@@ -109,7 +156,7 @@ void keyReleased() {
 
 void gameOver(String msg) {
   mensagemFimDeJogo = msg;
-  cenaGame.ativo = false;
-  cenaIntro.ativo = true;
   acabou=true;
+  //cenaGame.ativo = false;
+  //cenaIntro.ativo = true;
 }

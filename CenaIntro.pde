@@ -3,6 +3,7 @@ class CenaIntro extends Scene {
   PImage img_felpudo;
   float fl;
   float fa;
+  MessageBox m1 = new MessageBox("Olá! Eu sou o Felpudo!\nINTRUÇÕES:\nUse as SETAS DO TECLADO para movimentar e ESPAÇO para atirar.", "felpudo_google_glass.png");
 
   CenaIntro() {
     super();
@@ -30,6 +31,9 @@ class CenaIntro extends Scene {
     scale(-1, 1.0);
     image(img_felpudo, -width/2-fl/2, height-fa-20, fl, fa);
     popMatrix();
+    if(ativo) {
+        m1.update();
+    }
   }
 
   void apertouKey(Scene proxima) {
@@ -39,7 +43,6 @@ class CenaIntro extends Scene {
     if (key == 'X' || key == 'x') {
       proxima.ativo=true;
       this.ativo=false;
-      println("apertou x durante a intro");
     }
   }
 }
