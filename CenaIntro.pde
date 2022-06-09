@@ -21,12 +21,13 @@ class CenaIntro extends Scene {
     fill(50);
     noStroke();
     fill(30);
-    rect( 0, 40, width, 80);
+    rect( 0, 30, width, 100);
     textAlign(CENTER, TOP);
     textFont(minhaFonte);
     textSize(52);
     fill(#d00b1c);
-    text("The Legend of Felpudo", 0, 60, width, 160);
+    text("The Legend of Felpudo", 0, 40, width, 160);
+    text("Por Matheus de Jesus Messias", 0, 80, width, 160);
     pushMatrix();
     scale(-1, 1.0);
     image(img_felpudo, -width/2-fl/2, height-fa-20, fl, fa);
