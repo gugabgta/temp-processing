@@ -20,11 +20,17 @@ class CenaHistoria extends Scene {
     rect( 0, 0, width, height);
     textAlign(CENTER, TOP);
     textFont(minhaFonte);
-    textSize(52);
+    textSize(30);
     fill(#d00b1c);
-    text("aqui começa a historia...", 0, 60, width, 160);
-    text("pula linha?...", 0, 60, width, 160);
-    text("\npossivel tamanho diferente", 0, 90, width, 160);
+    text("Essa e a historia de Felpudo ", 0, 60, width, 160);
+    text("Um grande guerreiro ", 0, 100, width, 160);
+    text("\nque protege a Fofura", 0, 140, width, 160);
+    text("\numa nobre donzela dos campos de ferro", 0, 180, width, 160);
+    text("\nporem, incontaveis montros apareceram ", 0, 220, width, 160);
+    text("\nameacando a paz da Fofura e de nosso heroi", 0, 260, width, 160);
+    text("\nagora, Felpudo deve proteger a paz", 0, 300, width, 160);
+
+    text("\naperte X para comecar sua jornada", 0, 380, width, 160);
     pushMatrix();
     popMatrix();
 
